@@ -24,6 +24,8 @@ public class ManualElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	//MAP buttons 4 and 6 on the left joy to up and down
     	if(Robot.oi.getLeftJoy().getRawButton(4) || Robot.oi.getLeftJoy().getRawButton(6)){
 			if(Robot.oi.getLeftJoy().getRawButton(4)){
 				Robot.elevator.setSpeed(-0.50);
@@ -35,6 +37,7 @@ public class ManualElevator extends Command {
 		else{
 			Robot.elevator.setSpeed(0);
 		}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
