@@ -3,6 +3,7 @@ package org.usfirst.frc.team4795.robot.commands;
 import org.usfirst.frc.team4795.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,19 +25,7 @@ public class ManualElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	//MAP buttons 4 and 6 on the left joy to up and down
-    	if(Robot.oi.getLeftJoy().getRawButton(4) || Robot.oi.getLeftJoy().getRawButton(6)){
-			if(Robot.oi.getLeftJoy().getRawButton(4)){
-				Robot.elevator.setSpeed(-0.50);
-			}
-			if(Robot.oi.getLeftJoy().getRawButton(6)){
-				Robot.elevator.setSpeed(0.50);
-			}
-		}
-		else{
-			Robot.elevator.setSpeed(0);
-		}
+    	Robot.elevator.setPosition(SmartDashboard.getNumber("encoderSet", 0));
     	
     }
 
@@ -47,7 +36,7 @@ public class ManualElevator extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.elevator.setSpeed(0);
+    	
     }
 
     // Called when another command which requires one or more of the same

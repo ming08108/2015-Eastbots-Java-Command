@@ -5,6 +5,7 @@ import org.usfirst.frc.team4795.robot.commands.ManualElevator;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,6 +16,14 @@ public class Elevator extends Subsystem {
 	
 	public Elevator(){
 		winchMotor = new CANJaguar(RobotMap.winchMotor);
+		winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, -300, 0, 0);
+		
+		winchMotor.configSoftPositionLimits(0, 6);
+		winchMotor.enableControl(0);
+		
+		
+		
+		SmartDashboard.putNumber("encoderSet", 0);
 		
 	}
     
@@ -27,12 +36,17 @@ public class Elevator extends Subsystem {
     	setDefaultCommand(new ManualElevator());
     }
     
+    
+    
     /**
-     * Sets the speed of the winchMotor
-     * @param speed [-1,1]
+     * Sets the position of the winchMotor
+     * @param posistion [0, 6]
      */
-    public void setSpeed(double speed){
-    	winchMotor.set(speed);
+    public void setPosition(double posistion){
+    	winchMotor.set(posistion);
+    	
+    	SmartDashboard.putNumber("encoder", winchMotor.getPosition());
     }
+    
 }
 
