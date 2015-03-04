@@ -17,6 +17,8 @@ public class Elevator extends Subsystem {
 	public Elevator(){
 		winchMotor = new CANJaguar(RobotMap.winchMotor);
 		
+		winchMotor.configNeutralMode(CANJaguar.NeutralMode.Brake);
+		
 	}
     
     // Put methods for controlling this subsystem
@@ -29,14 +31,23 @@ public class Elevator extends Subsystem {
     }
     
     public void startPid(double p, double i, double d){
-    	
+    	winchMotor.disableControl();
     	winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
-		winchMotor.configSoftPositionLimits(0, 6);
 		winchMotor.enableControl(0);
     }
     
-    public void startVoltageMode(){
-    	winchMotor.setVoltageMode();
+    
+    public void startSpeedMode(double p, double i, double d){
+    	winchMotor.disableControl();
+    	winchMotor.setSpeedMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
+		winchMotor.enableControl();
+    }
+    
+    
+    
+    public void startPercentMode(){
+    	winchMotor.disableControl();
+    	winchMotor.setPercentMode();
     	winchMotor.enableControl();
     }
     
@@ -57,7 +68,6 @@ public class Elevator extends Subsystem {
      */
     public void setSpeed(double speed){
     	winchMotor.set(speed);
-    	
     }
     
     

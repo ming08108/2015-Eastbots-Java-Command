@@ -24,13 +24,14 @@ public class HoldElevator extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.elevator.startPid(-80, 0, 0);
-    	holdPosition = Robot.elevator.getPosition();
+    	Robot.elevator.startSpeedMode(-0.5, -0.05, 0);
+    	//holdPosition = Robot.elevator.getPosition();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.elevator.setPosition(holdPosition);
+    	
+    	Robot.elevator.setSpeed(0.001);
     }
 
     // Make this return true when this Command no longer needs to run execute()

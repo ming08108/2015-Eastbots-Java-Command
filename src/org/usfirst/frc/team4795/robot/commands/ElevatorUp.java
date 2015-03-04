@@ -2,6 +2,8 @@ package org.usfirst.frc.team4795.robot.commands;
 
 import org.usfirst.frc.team4795.robot.Robot;
 
+import edu.wpi.first.wpilibj.can.CANMessageNotAllowedException;
+import edu.wpi.first.wpilibj.can.CANMessageNotFoundException;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -17,12 +19,18 @@ public class ElevatorUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.elevator.startVoltageMode();
+    	Robot.elevator.startPercentMode();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.elevator.setSpeed(0.5);
+    	try{
+    		Robot.elevator.setSpeed(-0.5);
+    	}
+    	catch(CANMessageNotAllowedException e){
+    		
+    	}
+    	
     	Robot.elevator.log();
     }
 

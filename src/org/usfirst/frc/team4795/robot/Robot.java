@@ -33,12 +33,14 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+		
 		
         //Init subsystems
 		drivetrain = new DriveTrain();
 		elevator = new Elevator();
 		arm = new Arm();
+		
+		oi = new OI();
 
     }
 	

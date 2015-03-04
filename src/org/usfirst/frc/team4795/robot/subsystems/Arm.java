@@ -29,6 +29,7 @@ public class Arm extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    
     /*
      * set the speed of the arm motor
      */
