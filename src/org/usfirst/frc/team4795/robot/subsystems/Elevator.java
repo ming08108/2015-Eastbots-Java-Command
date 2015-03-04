@@ -16,12 +16,12 @@ public class Elevator extends Subsystem {
 	
 	public Elevator(){
 		winchMotor = new CANJaguar(RobotMap.winchMotor);
-		winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, -300, 0, 0);
+		winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, -80, -0.02, 0);
 		
 		winchMotor.configSoftPositionLimits(0, 6);
 		winchMotor.enableControl(0);
 		
-		
+		 
 		
 		SmartDashboard.putNumber("encoderSet", 0);
 		

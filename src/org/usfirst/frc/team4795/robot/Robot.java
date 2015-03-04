@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4795.robot.subsystems.Elevator;
 
@@ -24,7 +25,7 @@ public class Robot extends IterativeRobot {
 	//IMPORTANT init the subsystems in robotInit!
 	public static DriveTrain drivetrain;
 	public static Elevator elevator;
-	
+	public static Arm arm;
 
 
     /**
@@ -37,6 +38,7 @@ public class Robot extends IterativeRobot {
         //Init subsystems
 		drivetrain = new DriveTrain();
 		elevator = new Elevator();
+		arm = new Arm();
 
     }
 	
