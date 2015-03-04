@@ -1,7 +1,11 @@
 package org.usfirst.frc.team4795.robot;
 
+import org.usfirst.frc.team4795.robot.commands.ElevatorDown;
+import org.usfirst.frc.team4795.robot.commands.ElevatorUp;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 /**
@@ -21,6 +25,14 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
+    private Button elevatorUp = new JoystickButton(leftJoy, 6);
+    private Button elevatorDown = new JoystickButton(leftJoy, 4);
+    
+    public OI(){
+    	elevatorUp.whileHeld(new ElevatorUp());
+    	elevatorDown.whileHeld(new ElevatorDown());
+    }
+
     
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -37,6 +49,7 @@ public class OI {
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
     // button.whileHeld(new ExampleCommand());
+    
     
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
