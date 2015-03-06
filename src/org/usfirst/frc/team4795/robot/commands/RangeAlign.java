@@ -2,22 +2,20 @@ package org.usfirst.frc.team4795.robot.commands;
 
 import org.usfirst.frc.team4795.robot.Robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Simple tankdrive command
+ *
  */
-public class TankDrive extends Command {
+public class RangeAlign extends Command {
 
+	double target;
 	
-    public TankDrive() {
+    public RangeAlign(double distance) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	
-    	
+    	target = distance;
     }
 
     // Called just before this Command runs the first time
@@ -27,20 +25,24 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//inverting one wheel is handled in the subsystem
-    	Robot.drivetrain.drive(Robot.oi.getLeftJoy().getY(), Robot.oi.getRightJoy().getY());
+    	if(Robot.drivetrain.getRange() > target){
+    		Robot.drivetrain.drive(0.2, 0.2);
+    	}
+    	else{
+    		Robot.drivetrain.drive(0, 0);
+    	}
     	
     	Robot.drivetrain.log();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false; //run forever until interrupt
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivetrain.drive(0, 0); //stop the motor
+    	Robot.drivetrain.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
