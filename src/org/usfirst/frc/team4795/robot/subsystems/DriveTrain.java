@@ -58,7 +58,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void log(){
-    	SmartDashboard.getNumber("Range Finder", getRange());
+    	SmartDashboard.putNumber("Range Finder", getRange());
     }
     
 }

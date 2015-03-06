@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team4795.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -26,6 +27,9 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static Elevator elevator;
 	public static Arm arm;
+	
+	private CameraServer cameraServer;
+	
 
 
     /**
@@ -41,6 +45,10 @@ public class Robot extends IterativeRobot {
 		arm = new Arm();
 		
 		oi = new OI();
+		
+		cameraServer = CameraServer.getInstance();
+		cameraServer.setQuality(50);
+		cameraServer.startAutomaticCapture();
 
     }
 	

@@ -43,7 +43,7 @@ public class OI {
     	armIn.whileHeld(new SpinArm(0.5));
     	armOut.whileHeld(new SpinArm(-0.5));
     	
-    	leftTrigger.whileHeld(new RangeAlign(10));
+    	leftTrigger.whileHeld(new RangeAlign(40));
     	
     }
 

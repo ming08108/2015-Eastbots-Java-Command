@@ -2,16 +2,21 @@ package org.usfirst.frc.team4795.robot.commands;
 
 import org.usfirst.frc.team4795.robot.Robot;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class RangeAlign extends Command {
+public class RangeAlign extends PIDCommand {
 
 	double target;
 	
     public RangeAlign(double distance) {
+    	super(-0.02, 0, 0);
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
@@ -25,14 +30,15 @@ public class RangeAlign extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.drivetrain.getRange() > target){
-    		Robot.drivetrain.drive(0.2, 0.2);
-    	}
-    	else{
-    		Robot.drivetrain.drive(0, 0);
-    	}
+    	
+    	
+    	
+    	
     	
     	Robot.drivetrain.log();
+    	
+    	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -50,4 +56,31 @@ public class RangeAlign extends Command {
     protected void interrupted() {
     	end();
     }
+    
+    
+
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return target - Robot.drivetrain.getRange();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		
+		
+		if(Math.abs(output) > 0.3){
+			Robot.drivetrain.drive(Math.signum(output) * 0.3, Math.signum(output) * 0.3);
+			
+			SmartDashboard.putNumber("speed", Math.signum(output) * 0.3);
+		}
+		else{
+			Robot.drivetrain.drive(output, output);
+			SmartDashboard.putNumber("speed", output);
+		}
+		
+    	
+		
+    	
+	}
 }
