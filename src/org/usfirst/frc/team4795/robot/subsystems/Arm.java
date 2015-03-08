@@ -2,6 +2,7 @@ package org.usfirst.frc.team4795.robot.subsystems;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -17,10 +18,9 @@ public class Arm extends Subsystem {
 		super();
 		
 		armMotor = new CANTalon(5);
+		armMotor.setFeedbackDevice(CANTalon.FeedbackDevice.QuadEncoder);
 		
 		
-		//Test TODO remove
-		//armMotor.set(0.5);
 		
 	}
 
@@ -29,6 +29,10 @@ public class Arm extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    
+    public void log(){
+    	SmartDashboard.putNumber("Arm Posistion", armMotor.getPosition());
+    }
     
     /*
      * set the speed of the arm motor
