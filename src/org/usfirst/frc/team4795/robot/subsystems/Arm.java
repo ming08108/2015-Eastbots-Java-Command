@@ -31,7 +31,7 @@ public class Arm extends Subsystem {
     
     
     public void log(){
-    	SmartDashboard.putNumber("Arm Posistion", armMotor.getPosition());
+    	SmartDashboard.putNumber("Arm Position", armMotor.getPosition());
     }
     
     /*
