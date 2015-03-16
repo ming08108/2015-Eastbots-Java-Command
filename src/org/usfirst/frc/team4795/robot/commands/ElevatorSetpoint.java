@@ -36,8 +36,6 @@ public class ElevatorSetpoint extends Command {
     	Robot.elevator.setPosition(setPoint);
     	
     	
-    	
-    	
     	Robot.elevator.log();
     }
 

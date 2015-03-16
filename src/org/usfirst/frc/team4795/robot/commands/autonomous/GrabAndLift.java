@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4795.robot.commands.autonomous;
 
 import org.usfirst.frc.team4795.robot.commands.ArmSetpoint;
+import org.usfirst.frc.team4795.robot.commands.ElevatorSetpoint;
 import org.usfirst.frc.team4795.robot.commands.HomeArm;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -16,12 +17,17 @@ public class GrabAndLift extends CommandGroup {
     	//Make sure arm is in the home position
     	addSequential(new HomeArm());
     	
-    	//close the arm in the correct position TODO
+    	//close the arm in the correct position TODO find correct position
     	addSequential(new ArmSetpoint(-825));
     	
     	
-    	//TODO lift
+    	//TODO test
     	
+    	//lift 2 revs
+    	addSequential(new ElevatorSetpoint(2));
+    	
+    	//go back down
+    	addSequential(new ElevatorSetpoint(0));
     	
     	
         // Add Commands here:
