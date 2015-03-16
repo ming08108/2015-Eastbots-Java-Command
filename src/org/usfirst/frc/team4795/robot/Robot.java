@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.DriveTrain;
@@ -58,7 +59,14 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        
+    	SmartDashboard.putBoolean("Zeroed", false);
+    	if(arm.zero()) {
+    		SmartDashboard.putBoolean("Zeroed", true);
+    	}
+    	arm.grabTote();
+//    	elevator.liftTote();
+    	
+
     }
 
     /**

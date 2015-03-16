@@ -23,6 +23,9 @@ public class Elevator extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+	
+	
+	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -30,10 +33,15 @@ public class Elevator extends Subsystem {
     	setDefaultCommand(new HoldElevator());
     }
     
-    public void startPid(double p, double i, double d){
+    public void startPositionMode(double p, double i, double d){
     	winchMotor.disableControl();
     	winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
 		winchMotor.enableControl(0);
+    }
+    
+    public void liftTote() {
+    	startPositionMode(100, 0, 0);
+    	setPosition(1);
     }
     
     
@@ -42,6 +50,8 @@ public class Elevator extends Subsystem {
     	winchMotor.setSpeedMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
 		winchMotor.enableControl();
     }
+    
+    
     
     
     

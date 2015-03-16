@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Moves the elevator down at fixed rate
  */
+
 public class ElevatorDown extends Command {
 
     public ElevatorDown() {
@@ -19,13 +20,13 @@ public class ElevatorDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.elevator.startPercentMode();
+    	Robot.elevator.startSpeedMode(-0.5, -0.05, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	try{
-    		Robot.elevator.setSpeed(0.5);
+    		Robot.elevator.setSpeed(-180);
     	}
     	catch(CANMessageNotAllowedException e){
     		

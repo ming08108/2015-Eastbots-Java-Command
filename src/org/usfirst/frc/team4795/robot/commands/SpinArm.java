@@ -3,6 +3,7 @@ package org.usfirst.frc.team4795.robot.commands;
 import org.usfirst.frc.team4795.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -26,6 +27,11 @@ public class SpinArm extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.arm.setSpeed(speed);
+    	SmartDashboard.putNumber("encoderPosition", Robot.arm.getPosition());
+    	SmartDashboard.putNumber("encoderSpeed", Robot.arm.getSpeed());
+    	SmartDashboard.putBoolean("Forward Limit", Robot.arm.canGoForward());
+    	SmartDashboard.putBoolean("Reverse Limit", Robot.arm.canGoReverse());
+    	SmartDashboard.putNumber("current", Robot.arm.getCurrent());
     }
 
     // Make this return true when this Command no longer needs to run execute()

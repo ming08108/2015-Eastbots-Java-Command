@@ -30,8 +30,8 @@ public class OI {
     private Button elevatorUp = new JoystickButton(leftJoy, 6);
     private Button elevatorDown = new JoystickButton(leftJoy, 4);
     
-    private Button armIn = new JoystickButton(rightJoy, 5);
-    private Button armOut = new JoystickButton(rightJoy, 6);
+    private Button armIn = new JoystickButton(rightJoy, 6);
+    private Button armOut = new JoystickButton(rightJoy, 5);
     
     private Button leftTrigger = new JoystickButton(leftJoy, 1);
     
