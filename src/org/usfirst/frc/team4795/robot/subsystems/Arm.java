@@ -41,5 +41,18 @@ public class Arm extends Subsystem {
     	armMotor.set(speed);
     }
     
+    
+    public boolean canGoForward() {
+    	return !armMotor.isFwdLimitSwitchClosed();
+    }
+    
+    public boolean canGoReverse() {
+    	return !armMotor.isRevLimitSwitchClosed();
+    }
+    
+    public double getPosition() {
+    	return armMotor.getPosition();
+    }
+    
 }
 

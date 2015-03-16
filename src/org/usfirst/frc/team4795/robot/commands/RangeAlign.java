@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * Attempt to use PID control to drive up to a tote
  */
 public class RangeAlign extends PIDCommand {
 

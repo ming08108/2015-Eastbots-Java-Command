@@ -2,31 +2,43 @@ package org.usfirst.frc.team4795.robot.commands;
 
 import org.usfirst.frc.team4795.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Move the arm motor at a given speed
+ * Use PID position control to move the elevator to a certain position
  */
-public class SpinArm extends Command {
+public class ElevatorSetpoint extends Command {
 
-	double speed;
-    public SpinArm(double speed) {
+	
+	
+	
+	double setPoint;
+    public ElevatorSetpoint(double setPoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.arm);
+    	requires(Robot.elevator);
+    	this.setPoint = setPoint;
     	
-    	this.speed = speed;
+    	
+    	//TODO remove this and exit when finished
+    	//Exit after 2 seconds, what we should do is exit when it reaches the setpoint
+    	setTimeout(2);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.elevator.startPositionMode(-50, 0, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.arm.setSpeed(speed);
-    	Robot.arm.log();
+    	Robot.elevator.setPosition(setPoint);
+    	
+    	
+    	
+    	
+    	Robot.elevator.log();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,12 +48,12 @@ public class SpinArm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.arm.setSpeed(0);
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	
     }
 }

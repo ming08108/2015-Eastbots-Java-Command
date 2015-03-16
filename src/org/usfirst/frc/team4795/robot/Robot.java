@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4795.robot.commands.autonomous.GrabAndLift;
 import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4795.robot.subsystems.Elevator;
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
 	
 	private CameraServer cameraServer;
 	
+	Command autonomousCommand;
 
 
     /**
@@ -38,13 +40,15 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		
-		
         //Init subsystems
 		drivetrain = new DriveTrain();
 		elevator = new Elevator();
 		arm = new Arm();
 		
 		oi = new OI();
+		
+		autonomousCommand = new GrabAndLift();
+		
 		
 		cameraServer = CameraServer.getInstance();
 		cameraServer.setQuality(50);
@@ -58,7 +62,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        
+    	autonomousCommand.start();
     }
 
     /**

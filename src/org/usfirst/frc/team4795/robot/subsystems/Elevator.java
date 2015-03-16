@@ -30,7 +30,7 @@ public class Elevator extends Subsystem {
     	setDefaultCommand(new HoldElevator());
     }
     
-    public void startPid(double p, double i, double d){
+    public void startPositionMode(double p, double i, double d){
     	winchMotor.disableControl();
     	winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
 		winchMotor.enableControl(0);
@@ -59,7 +59,6 @@ public class Elevator extends Subsystem {
     public void setPosition(double posistion){
     	winchMotor.set(posistion);
     	
-    	SmartDashboard.putNumber("encoder", winchMotor.getPosition());
     }
     
     /**
