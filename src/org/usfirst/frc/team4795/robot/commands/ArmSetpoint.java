@@ -33,7 +33,7 @@ public class ArmSetpoint extends Command {
     		Robot.arm.setSpeed(0.5);
     	}
     	else{
-    		isFinished = false;
+    		isFinished = true;
     	}
     	
     	Robot.arm.log();
