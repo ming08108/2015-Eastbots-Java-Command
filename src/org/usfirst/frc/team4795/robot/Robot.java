@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4795.robot.commands.autonomous.GrabAndLift;
 import org.usfirst.frc.team4795.robot.subsystems.Arm;
@@ -39,6 +40,9 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	SmartDashboard.putNumber("P", 0);
+    	SmartDashboard.putNumber("I", 0);
+    	SmartDashboard.putNumber("D", 0);
 		
         //Init subsystems
 		drivetrain = new DriveTrain();
@@ -49,10 +53,14 @@ public class Robot extends IterativeRobot {
 		
 		autonomousCommand = new GrabAndLift();
 		
-		
-		cameraServer = CameraServer.getInstance();
-		cameraServer.setQuality(50);
-		cameraServer.startAutomaticCapture();
+		try{
+			cameraServer = CameraServer.getInstance();
+			cameraServer.setQuality(50);
+			cameraServer.startAutomaticCapture();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 
     }
 	

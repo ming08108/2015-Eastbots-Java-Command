@@ -2,6 +2,7 @@ package org.usfirst.frc.team4795.robot;
 
 import org.usfirst.frc.team4795.robot.commands.MoveElevator;
 import org.usfirst.frc.team4795.robot.commands.RangeAlign;
+import org.usfirst.frc.team4795.robot.commands.ResistRotation;
 import org.usfirst.frc.team4795.robot.commands.SpinArm;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -34,6 +35,8 @@ public class OI {
     
     private Button leftTrigger = new JoystickButton(leftJoy, 1);
     
+    
+    
     public OI(){
     	elevatorUp.whileHeld(new MoveElevator(-0.5));
     	elevatorDown.whileHeld(new MoveElevator(0.5));
@@ -44,7 +47,7 @@ public class OI {
     	
     	
     	//TODO
-    	//leftTrigger.whileHeld(new RangeAlign(40));
+    	leftTrigger.whileHeld(new ResistRotation());
     	
     }
 
