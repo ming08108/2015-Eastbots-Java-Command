@@ -4,6 +4,7 @@ import org.usfirst.frc.team4795.robot.commands.MoveElevator;
 import org.usfirst.frc.team4795.robot.commands.RangeAlign;
 import org.usfirst.frc.team4795.robot.commands.ResistRotation;
 import org.usfirst.frc.team4795.robot.commands.SpinArm;
+import org.usfirst.frc.team4795.robot.commands.TransverseDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -47,7 +48,7 @@ public class OI {
     	
     	
     	//TODO
-    	leftTrigger.whileHeld(new ResistRotation());
+    	leftTrigger.whileHeld(new TransverseDrive());
     	
     }
 

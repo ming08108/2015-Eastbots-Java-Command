@@ -12,6 +12,7 @@ import org.usfirst.frc.team4795.robot.commands.autonomous.GrabAndLift;
 import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4795.robot.subsystems.Elevator;
+import org.usfirst.frc.team4795.robot.subsystems.TransverseWheel;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static Elevator elevator;
 	public static Arm arm;
+	public static TransverseWheel transverseWheel;
 	
 	private CameraServer cameraServer;
 	
@@ -48,10 +50,12 @@ public class Robot extends IterativeRobot {
 		drivetrain = new DriveTrain();
 		elevator = new Elevator();
 		arm = new Arm();
+		transverseWheel = new TransverseWheel();
 		
 		oi = new OI();
 		
 		autonomousCommand = new GrabAndLift();
+		
 		
 		try{
 			cameraServer = CameraServer.getInstance();
