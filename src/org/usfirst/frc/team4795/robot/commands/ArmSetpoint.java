@@ -28,13 +28,20 @@ public class ArmSetpoint extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+    	double pos = Robot.arm.getPosition();
     	//TODO move the other way if the encoder value requires
-    	if(Robot.arm.getPosition() > setPoint){
-    		Robot.arm.setSpeed(0.5);
-    	}
-    	else{
+    	
+    	//if we are within tolerance then exit
+    	if(Math.abs(pos - setPoint) < 20){
     		isFinished = true;
     	}
+    	else if(pos > setPoint){
+    		Robot.arm.setSpeed(0.5);
+    	}
+    	else if(pos < setPoint){
+    		Robot.arm.setSpeed(-0.5);
+    	}
+    	
     	
     	Robot.arm.log();
     }
