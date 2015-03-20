@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4795.robot;
 
+import org.usfirst.frc.team4795.robot.commands.ArmSetpoint;
+import org.usfirst.frc.team4795.robot.commands.HomeArm;
 import org.usfirst.frc.team4795.robot.commands.MoveElevator;
 import org.usfirst.frc.team4795.robot.commands.RangeAlign;
 import org.usfirst.frc.team4795.robot.commands.ResistRotation;
@@ -42,9 +44,14 @@ public class OI {
     	elevatorUp.whileHeld(new MoveElevator(0.5));
     	elevatorDown.whileHeld(new MoveElevator(-0.5));
     	
-    	
+    	/*
     	armIn.whileHeld(new SpinArm(0.5));
     	armOut.whileHeld(new SpinArm(-0.5));
+    	*/
+    	
+    	//make arms move to fixed places
+    	armIn.whileHeld(new HomeArm());
+    	armOut.whileHeld(new ArmSetpoint(-570));
     	
     	
     	//TODO
