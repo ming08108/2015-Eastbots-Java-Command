@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4795.robot.commands.autonomous;
 
 import org.usfirst.frc.team4795.robot.commands.ArmSetpoint;
+import org.usfirst.frc.team4795.robot.commands.Drive;
 import org.usfirst.frc.team4795.robot.commands.ElevatorSetpoint;
 import org.usfirst.frc.team4795.robot.commands.HomeArm;
 
@@ -18,17 +19,18 @@ public class GrabAndLift extends CommandGroup {
     	addSequential(new HomeArm());
     	
     	//close the arm in the correct position TODO find correct position
-    	addSequential(new ArmSetpoint(-825));
+    	addSequential(new ArmSetpoint(-825), 2);
     	
     	
-    	//TODO test
     	
     	//lift 2 revs
-    	addSequential(new ElevatorSetpoint(2));
+    	addSequential(new ElevatorSetpoint(4), 2);
     	
-    	//go back down
-    	addSequential(new ElevatorSetpoint(0));
+    	//TURN
+    	addSequential(new Drive(0.3, -0.3), 1.7);
     	
+    	//DRIVE FORWARD
+    	addSequential(new Drive(0.3, 0.3), 5);
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

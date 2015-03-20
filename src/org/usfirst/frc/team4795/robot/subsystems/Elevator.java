@@ -33,7 +33,7 @@ public class Elevator extends Subsystem {
     public void startPositionMode(double p, double i, double d){
     	winchMotor.disableControl();
     	winchMotor.setPositionMode(CANJaguar.kQuadEncoder, 2048, p, i, d);
-		winchMotor.enableControl(0);
+		winchMotor.enableControl();
     }
     
     
@@ -67,6 +67,11 @@ public class Elevator extends Subsystem {
      */
     public void setSpeed(double speed){
     	winchMotor.set(speed);
+    }
+    
+    
+    public double getPosistion(){
+    	return winchMotor.getPosition();
     }
     
     

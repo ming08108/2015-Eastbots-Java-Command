@@ -26,6 +26,7 @@ public class ManualElevator extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.elevator.setPosition(SmartDashboard.getNumber("encoderSet", 0));
+    	Robot.elevator.log();
     	
     }
 

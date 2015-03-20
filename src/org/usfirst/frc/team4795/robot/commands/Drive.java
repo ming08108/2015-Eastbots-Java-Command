@@ -1,58 +1,43 @@
 package org.usfirst.frc.team4795.robot.commands;
 
-
 import org.usfirst.frc.team4795.robot.Robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Simple tankdrive command
+ *
  */
-public class TankDrive extends Command {
+public class Drive extends Command {
 
+	double left;
+	double right;
 	
-
-	
-	
-	
-    public TankDrive() {
+    public Drive(double l, double r) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
-    	
-    	
+    	left = l;
+    	right = r;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//inverting one wheel is handled in the subsystem
-    	
-    	double throttle = 1 - ((Robot.oi.getLeftJoy().getThrottle() + 1) / 2.0);
-    	SmartDashboard.putNumber("multiplier", throttle);
-    	
-    	Robot.drivetrain.drive(Robot.oi.getLeftJoy().getY() * throttle, Robot.oi.getRightJoy().getY() * throttle);
-    	
-    	Robot.drivetrain.log();
+    	Robot.drivetrain.drive(left, right);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false; //run forever until interrupt
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivetrain.drive(0, 0); //stop the motor
+    	Robot.drivetrain.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

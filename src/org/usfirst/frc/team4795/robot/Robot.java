@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	SmartDashboard.putNumber("P", 0);
+    	SmartDashboard.putNumber("P", 0.001);
     	SmartDashboard.putNumber("I", 0);
     	SmartDashboard.putNumber("D", 0);
 		
@@ -54,12 +54,12 @@ public class Robot extends IterativeRobot {
 		
 		oi = new OI();
 		
-		autonomousCommand = new GrabAndLift();
+		
 		
 		
 		try{
 			cameraServer = CameraServer.getInstance();
-			cameraServer.setQuality(50);
+			cameraServer.setQuality(10);
 			cameraServer.startAutomaticCapture();
 		}
 		catch(Exception e){
@@ -73,6 +73,7 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	autonomousCommand = new GrabAndLift();
         // schedule the autonomous command (example)
     	autonomousCommand.start();
     }

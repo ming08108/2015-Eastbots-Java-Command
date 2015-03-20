@@ -39,8 +39,8 @@ public class OI {
     
     
     public OI(){
-    	elevatorUp.whileHeld(new MoveElevator(-0.5));
-    	elevatorDown.whileHeld(new MoveElevator(0.5));
+    	elevatorUp.whileHeld(new MoveElevator(0.5));
+    	elevatorDown.whileHeld(new MoveElevator(-0.5));
     	
     	
     	armIn.whileHeld(new SpinArm(0.5));
@@ -49,6 +49,7 @@ public class OI {
     	
     	//TODO
     	leftTrigger.whileHeld(new TransverseDrive());
+    	leftTrigger.whileHeld(new ResistRotation());
     	
     }
 

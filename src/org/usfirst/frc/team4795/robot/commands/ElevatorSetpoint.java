@@ -22,18 +22,19 @@ public class ElevatorSetpoint extends Command {
     	
     	
     	//TODO remove this and exit when finished
-    	//Exit after 2 seconds, what we should do is exit when it reaches the setpoint
-    	setTimeout(2);
+    	
     }
 
+    double initPos;
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.elevator.startPositionMode(-50, 0, 0);
+    	initPos = Robot.elevator.getPosistion();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.elevator.setPosition(setPoint);
+    	Robot.elevator.setPosition(setPoint + initPos);
     	
     	
     	Robot.elevator.log();
