@@ -29,7 +29,9 @@ public class HomeArm extends Command {
     		Robot.arm.setSpeed(-0.5);
     	}
     	else{
+    		Robot.arm.zero();
     		isFinished = true;
+    		
     	}
     	
     	

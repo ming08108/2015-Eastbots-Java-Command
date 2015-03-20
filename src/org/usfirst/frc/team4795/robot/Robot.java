@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4795.robot.commands.HomeArm;
 import org.usfirst.frc.team4795.robot.commands.autonomous.GrabAndLift;
 import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.DriveTrain;
@@ -65,6 +66,8 @@ public class Robot extends IterativeRobot {
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		new HomeArm().start();
 
     }
 	

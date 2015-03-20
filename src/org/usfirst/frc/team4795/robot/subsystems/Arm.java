@@ -54,5 +54,9 @@ public class Arm extends Subsystem {
     	return armMotor.getPosition();
     }
     
+    public void zero(){
+    	armMotor.setPosition(0);
+    }
+    
 }
 
